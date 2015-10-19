@@ -1,45 +1,38 @@
-CMake_Minimum_Required(VERSION 2.6)
-SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb ")#就是这两行东东
-SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")#
-project(WProtect)
+cmake_minimum_required(VERSION 3.0)
+project(jwp CXX)
 
-#set (LIBRARY_TYPE_SHARED 0)  #是否生成共享链接库
-#set (LIBRARY_TYPE_STATIC 1)  #是否生成静态链接库
+set(CMAKE_CXX_FLAGS "-g	-Wall")
+#set(CMAKE_CXX_COMPILER "clang++")
+SET(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_VERBOSE_MAKEFILE on)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
+include_directories(${CMAKE_SOURCE_DIR}/..)
+link_directories(${CMAKE_BINARY_DIR}/lib)
 
-set(WPROTECT_VERSION_MAJOR 1)
-set(WPROTECT_VERSION_MINOR 2)
+include_directories(jwp)
+include_directories(src)
 
-option(PROTECT_X64 "protect 64 binrary" OFF)
-#option(DEBUG "the is debug" OFF)
-
-option(DEBUG "the is debug" OFF)
-
-option(X86 "the is X86" ON)
-option(STATIC_LIBRARY "the is static library" ON)
-option(LIBRARY_TYPE_STATIC "static lib" ON)
-option(LIBRARY_TYPE_SHARED "share lib" ON)
-option(QT_GUI "gui executable" OFF)
-
-if (NOT PROTECT_X64)
-set (CMAKE_C_FLAGS -m32)
-set (CMAKE_CXX_FLAGS -m32)
-endif()
-
-#编译数据库文件
-set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-configure_file(
-"${PROJECT_SOURCE_DIR}/WProtectConfig.h.in"
-"${PROJECT_BINARY_DIR}/WProtectConfig.h"
-)
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${PROJECT_BINARY_DIR})
-include_directories(inc)
-include_directories(inc/coff)
-include_directories(inc/elf)
-
-set (LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
-set (EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin/")
-
+add_subdirectory(jwp)
 add_subdirectory(src)
+
+message("-- CMAKE_C_COMPILER: " ${CMAKE_C_COMPILER})
+message("-- CMAKE_CXX_COMPILER: " ${CMAKE_CXX_COMPILER})
+
+message("-- CMAKE_SOURCE_DIR: " ${CMAKE_SOURCE_DIR})
+message("-- CMAKE_BINARY_DIR: " ${CMAKE_BINARY_DIR})
+message("-- CMAKE_CURRENT_SOURCE_DIR: " ${CMAKE_CURRENT_SOURCE_DIR})
+message("-- CMAKE_CURRRENT_BINARY_DIR: " ${CMAKE_CURRRENT_BINARY_DIR})
+message("-- CMAKE_CURRENT_LIST_FILE: " ${CMAKE_CURRENT_LIST_FILE})
+message("-- CMAKE_BUILD_TYPE: " ${CMAKE_BUILD_TYPE})
+message("-- CMAKE_INCLUDE_PATH: " ${CMAKE_INCLUDE_PATH})
+message("-- CMAKE_LIBRARY_PATH: " ${CMAKE_LIBRARY_PATH})
+message("-- CMAKE_MODULE_PATH: " ${CMAKE_MODULE_PATH})
+message("-- CMAKE_INSTALL_PREFIX: " ${CMAKE_INSTALL_PREFIX})
+message("-- BUILD_SHARED_LIBS: " ${BUILD_SHARED_LIBS})
+
+message("-- CMAKE_VERBOSE_MAKEFILE: " ${CMAKE_VERBOSE_MAKEFILE})
+message("-- CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_CXX_FLAGS_DEBUG})
+message("-- CMAKE_CXX_FLAGS_RELEASE: " ${CMAKE_CXX_FLAGS_RELEASE})
+message("-- EXECUTABLE_OUTPUT_PATH: " ${EXECUTABLE_OUTPUT_PATH})
+message("-- LIBRARY_OUTPUT_PATH: " ${LIBRARY_OUTPUT_PATH})

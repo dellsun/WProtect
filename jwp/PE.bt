@@ -1,0 +1,17 @@
+//--------------------------------------
+//--- 010 Editor v4.0.1 Binary Template
+//
+// File:
+// Author:
+// Revision:
+// Purpose:
+//--------------------------------------
+
+typedef struct {
+
+}IMAGE_DOS_HEADER;
+
+
+struct {
+    IMAGE_DOS_HEADER dos_header;
+}pe;

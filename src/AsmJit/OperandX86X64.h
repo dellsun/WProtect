@@ -160,7 +160,7 @@ struct ASMJIT_HIDDEN Operand
   // [Operand Id]
   // --------------------------------------------------------------------------
 
-  //! @brief Return operand Id (Operand Id's are used internally by 
+  //! @brief Return operand Id (Operand Id's are used internally by
   //! @c Assembler and @c Compiler classes).
   //!
   //! @note There is no way how to change or remove operand id. If you don't
@@ -193,7 +193,7 @@ struct ASMJIT_HIDDEN Operand
   // --------------------------------------------------------------------------
 
   //! @internal
-  //! 
+  //!
   //! @brief Base operand data shared between all operands.
   struct BaseData
   {
@@ -212,7 +212,7 @@ struct ASMJIT_HIDDEN Operand
   };
 
   //! @internal
-  //! 
+  //!
   //! @brief Register data.
   struct RegData
   {
@@ -232,7 +232,7 @@ struct ASMJIT_HIDDEN Operand
   };
 
   //! @internal
-  //! 
+  //!
   //! @brief Memory address data.
   struct MemData
   {
@@ -266,7 +266,7 @@ struct ASMJIT_HIDDEN Operand
   };
 
   //! @internal
-  //! 
+  //!
   //! @brief Immediate value data.
   struct ImmData
   {
@@ -288,7 +288,7 @@ struct ASMJIT_HIDDEN Operand
   };
 
   //! @internal
-  //! 
+  //!
   //! @brief Label data.
   struct LblData
   {
@@ -305,7 +305,7 @@ struct ASMJIT_HIDDEN Operand
   };
 
   //! @internal
-  //! 
+  //!
   //! @brief Variable data.
   struct VarData
   {
@@ -333,7 +333,7 @@ struct ASMJIT_HIDDEN Operand
     //! @brief Type of variable. See @c VARIABLE_TYPE enum.
     uint32_t variableType;
   };
-  
+
   //! @brief Binary data.
   struct BinData
   {
@@ -361,7 +361,7 @@ struct ASMJIT_HIDDEN Operand
     LblData _lbl;
     //! @brief Variable data.
     VarData _var;
-    //! @brief 
+    //! @brief
     BinData _bin;
   };
 };
@@ -1091,7 +1091,7 @@ ASMJIT_API Imm uimm(sysuint_t i) ASMJIT_NOTHROW;
 //! @brief Label (jump target or data location).
 //!
 //! Label represents locations typically used as jump targets, but may be also
-//! used as position where are stored constants or static variables. If you 
+//! used as position where are stored constants or static variables. If you
 //! want to use @c Label you need first to associate it with @c Assembler or
 //! @c Compiler instance. To create new label use @c Assembler::newLabel() or
 //! @c Compiler::newLabel().
@@ -1101,7 +1101,7 @@ ASMJIT_API Imm uimm(sysuint_t i) ASMJIT_NOTHROW;
 //! @code
 //! // Create Assembler or Compiler instance.
 //! Assembler a;
-//! 
+//!
 //! // Create Label instance.
 //! Label L_1(a);
 //!
@@ -1123,7 +1123,7 @@ struct ASMJIT_HIDDEN Label : public Operand
   // --------------------------------------------------------------------------
 
   //! @brief Create new, unassociated label.
-  inline Label() ASMJIT_NOTHROW : 
+  inline Label() ASMJIT_NOTHROW :
     Operand(_DontInitialize())
   {
     _lbl.op = OPERAND_LABEL;
@@ -1338,10 +1338,10 @@ struct ASMJIT_HIDDEN Mem : public Operand
     _mem.segmentPrefix = SEGMENT_NONE;
 
 #if defined(ASMJIT_X86)
-    _mem.sizePrefix = (reinterpret_cast<const Operand&>(base )._var.size | 
+    _mem.sizePrefix = (reinterpret_cast<const Operand&>(base )._var.size |
                        reinterpret_cast<const Operand&>(index)._var.size ) != 4;
 #else
-    _mem.sizePrefix = (reinterpret_cast<const Operand&>(base )._var.size | 
+    _mem.sizePrefix = (reinterpret_cast<const Operand&>(base )._var.size |
                        reinterpret_cast<const Operand&>(index)._var.size ) != 8;
 #endif
 
@@ -1406,7 +1406,7 @@ struct ASMJIT_HIDDEN Mem : public Operand
   //! @note This is useful only for MOV and LEA type of instructions.
   inline bool getSizePrefix() const ASMJIT_NOTHROW
   { return _mem.sizePrefix; }
-  
+
   //! @brief Set whether to use size-override prefix.
   inline void setSizePrefix(bool b) ASMJIT_NOTHROW
   { _mem.sizePrefix = b; }

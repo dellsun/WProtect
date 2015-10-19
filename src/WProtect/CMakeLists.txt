@@ -1,6 +1,0 @@
-add_subdirectory(Analysis)
-add_subdirectory(ELF)
-add_subdirectory(PE)
-#add_subdirectory(Encryption)
-add_subdirectory(Protect)
-add_subdirectory(DataStruct)

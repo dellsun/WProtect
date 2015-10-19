@@ -25,11 +25,11 @@
  */
 #ifndef UD_EXTERN_H
 #define UD_EXTERN_H
-
+/*
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+*/
 #include "types.h"
 
 /* ============================= PUBLIC API ================================= */
@@ -98,8 +98,9 @@ extern void ud_set_sym_resolver(struct ud *u,
                                                         int64_t *offset));
 
 /* ========================================================================== */
-
+/*
 #ifdef __cplusplus
 }
 #endif
+*/
 #endif /* UD_EXTERN_H */

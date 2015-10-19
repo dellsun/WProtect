@@ -1,7 +1,7 @@
 
 #include "Assembl.h"
 #include <string.h>
-#include "opcode_table.h"
+#include <AsmJit/opcode_table.h>
 #include <ctype.h>
 //#include <direct.h>
 #include <math.h>
@@ -9,7 +9,7 @@
 #include <WProtectConfig.h>
 
 #ifndef WINDOWS
-#include <MyString.h>
+#include <Common/MyString.h>
 #endif
 
 
@@ -1287,6 +1287,7 @@ int Assembl::get_code_size()
 {
 	return a.getCodeSize();
 }
+
 int Assembl::Assemble(char *cmd,ulong ip,asmmodel *model,char *error)
 {
 	Assembler a;
